@@ -1,0 +1,21 @@
+<div class="contenedor-home">
+  <div class="elhome">
+    <img class="imgHOME" src="./assets/home.jpg" />
+  </div>
+</div>
+
+<div class="card-container">
+  <div *ngFor="let producto of array; let i = index">
+    <div class="card">
+      <img src="{{ producto.img }}" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ producto.nombre }}</h5>
+        <p class="card-text">${{ producto.precio }}</p>
+        <p>{{ producto.descripcion }}</p>
+        <a href="#" class="btn btn-primary">comprar</a>
+      </div>
+    </div>
+  </div>
+</div>
+<h2 class="titulomarcas">Marcas con las que trabajamos</h2>
+<hr>

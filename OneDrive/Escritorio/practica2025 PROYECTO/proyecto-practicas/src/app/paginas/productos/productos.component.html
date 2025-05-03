@@ -1,0 +1,19 @@
+<select>
+  <option value="" selected disabled>¿busca algun tipo en particular?</option>
+</select>
+
+<div class="card-container">
+  <ng-container *ngIf="Productos && Productos.length">
+    <ng-container *ngFor="let producto of Productos">
+      <div *ngIf="producto.disponibilidad"  class="card">
+        <img [src]="producto.img" alt="{{producto.nombre}}" class="card-img-top"  />
+        <div class="card-body">
+          <h5 class="card-title">{{ producto.nombre }}</h5>
+          <p class="card-text">{{ producto.precio | currency }}</p>
+          <p>{{ producto.descripcion }}</p>
+          <button type="button" class="btn btn-outline-primary" (click)="agregar(producto)">Agregar al carrito</button>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
