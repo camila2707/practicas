@@ -44,6 +44,10 @@ export class CarritoComponent implements OnInit{
       alert('Compra Realizada')
       this.vaciarCarrito()
     }
+    calcularTotal(): number {
+      return this.carritoService.calcularTotal();
+    }
+   
   
 
 }

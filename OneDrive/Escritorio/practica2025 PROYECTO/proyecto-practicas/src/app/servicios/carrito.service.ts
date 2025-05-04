@@ -34,5 +34,17 @@ export class CarritoService {
     this.carritoSubject.next([])
   }
 
+  calcularTotal(): number {
+    const productos = this.carritoSubject.getValue(); // obtiene el array actual
+    let total = 0;
+    for (const item of productos) {
+      total += item.cantidad * item.producto.precio;
+    }
+    console.log('Total calculado:', total);
+    return total;
+  }
+ 
+ 
+
   constructor() { }
 }

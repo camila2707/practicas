@@ -5,13 +5,40 @@
 <div class="card-container">
   <ng-container *ngIf="Productos && Productos.length">
     <ng-container *ngFor="let producto of Productos">
-      <div *ngIf="producto.disponibilidad"  class="card">
-        <img [src]="producto.img" alt="{{producto.nombre}}" class="card-img-top"  />
+      <div *ngIf="producto.disponibilidad" class="card">
+        <img
+          [src]="producto.img"
+          alt="{{ producto.nombre }}"
+          class="card-img-top"
+        />
         <div class="card-body">
           <h5 class="card-title">{{ producto.nombre }}</h5>
-          <p class="card-text">{{ producto.precio | currency }}</p>
-          <p>{{ producto.descripcion }}</p>
-          <button type="button" class="btn btn-outline-primary" (click)="agregar(producto)">Agregar al carrito</button>
+          <h4 class="card-text">{{ producto.precio | currency }}</h4>
+          <button (click)="mostrardescripcion(producto)" class="botonDC">
+            Ver descripción
+          </button>
+
+          <!-- Mostrar solo si es el producto seleccionado -->
+          <p *ngIf="productoSeleccionado === producto">
+            <strong>Descripción:</strong> {{ producto.descripcion }}
+          </p>
+
+          <button (click)="mostrarcaracteristicas(producto)" class="botonDC">
+            Ver caracteristicas
+          </button>
+
+          <!-- Mostrar solo si es el producto seleccionado -->
+          <p *ngIf="productoSeleccionadoC === producto">
+            <strong>Caracteristicas:</strong> {{ producto.caracteristicas}}
+          </p>
+
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="agregar(producto)"
+          >
+            Agregar al carrito
+          </button>
         </div>
       </div>
     </ng-container>

@@ -9,5 +9,6 @@ export interface Productos{
     categoria:string;
     marca:string;
     stock:number;
+    caracteristicas:string;
 
 }
