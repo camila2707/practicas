@@ -1,3 +1,9 @@
+h1{
+    text-align: center;
+
+}
+
+
 /*en el contenedor de las tarjetas*/
 .card-container{
     display: flex;
@@ -80,6 +86,12 @@
     background-color: rgb(255, 238, 0);
 
 }
+.noproduc {
+    text-align: center;
+  }
+  
+/*boton de favoritos*/
+
 .star {
     --star-color: rgb(250, 190, 21);
     position: relative;

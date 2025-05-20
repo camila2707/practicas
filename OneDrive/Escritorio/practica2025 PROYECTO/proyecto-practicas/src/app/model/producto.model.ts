@@ -7,7 +7,7 @@ export interface Productos{
     disponibilidad: boolean;
     cantidad?:number;
     categoria:string;
-    marca:string;
+    oferta:boolean;
     stock:number;
     caracteristicas:string;
 

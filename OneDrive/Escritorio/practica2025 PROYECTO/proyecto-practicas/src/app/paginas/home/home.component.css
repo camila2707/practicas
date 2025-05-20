@@ -1,78 +1,119 @@
-.contenedor-home{
-    display:flex;
-  
-    flex-wrap: wrap;/*permite que se acomoden en la pantalla*/
-}
-.elhome{
-    width: 100%;
-    height: 550px;
-    overflow: hidden;
+.contenedor-home {
+  display: flex;
 
+  flex-wrap: wrap; /*permite que se acomoden en la pantalla*/
 }
-.imgHOME{
-   width: 100%;
-   height: 550px;
-   object-fit: fill;
-   
+.elhome {
+  width: 100%;
+  height: 550px;
+  overflow: hidden;
 }
-
-/*en el contenedor de las tarjetas*/
-.card-container{
-    display: flex;
-    justify-content: center;/*centrar las tarjetas*/
-    gap: 20px;/*enfoca*/
-    flex-wrap: wrap;/*permite que se acomoden en la pantalla*/
-    padding: 20px;
-    margin: 20px 10px 210px 10px;
+.imgHOME {
+  width: 100%;
+  height: 550px;
+  object-fit: fill;
 }
-/*estilos para las tarjetas*/
-.card{
-    width: 18rem;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.1 ease-in-out;
-    box-shadow: o 4px rgb(60, 60, 60);
-    
-   
-    
-
-}
-/*efecto hover de la tarjeta*/
-.card:hover{
-    transform: scale(1.01);
-    box-shadow: 0 8px 16px rgb(60, 60, 60);
-
+.carousel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
 }
 
-.card img{/*estilo imagen dentro de las tarjetas*/
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.contenedor-carrusel {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  scroll-snap-type: x mandatory;
 }
 
-.card .btn{/*estilo del boton*/
-    background-color: rgb(255, 149, 0);
-    color: black;
-    border: none;
-    transition: background 0.3s ease-in-out;
-    align-items: center;
-    width: 95%;
+.card {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  width: 18rem;
+  height: 20rem;
+   box-shadow: o 4px rgb(60, 60, 60);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  transition: 0.2s ease-in-out;
+  margin: 0;
+  text-align: center;
 }
 
-.card .btn:hover{
-    background-color: rgb(255, 238, 0);
+
+.img {
+  position: absolute;
+  transition: 0.2s ease-in-out;
+  z-index: 1;
+  object-fit:scale-down;
 }
 
-@media(max-width:600px){/*responsabilidad en pantalla chica*/
-    .card-container{
-        flex-direction: column;
-        align-items: center;
-    }
+.textBox {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transition: 0.2s ease-in-out;
+  z-index: 2;
 }
 
-.titulomarcas{
-    text-align: center;
-    color: rgb(0, 0, 77);
+.textBox > .text {
+  font-weight: bold;
+}
+
+.textBox > .head {
+  font-size: 20px;
+}
+
+.textBox > .price {
+  font-size: 17px;
+}
+
+.textBox > span {
+  font-size: 12px;
+  color: lightgrey;
+}
+
+.card:hover > .textBox {
+  opacity: 1;
+}
+
+.card:hover > .img {
+  height: 65%;
+  filter: blur(7px);
+  animation: anim 3s infinite;
+}
+
+@keyframes anim {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.card:hover {
+  transform: scale(1.04) rotate(-1deg);
+}
+
+.titulomarcas {
+  text-align: center;
+  color: rgb(0, 0, 77);
+}
+.ofertas {
+  text-align: center;
+  color: red;
+  margin: 100px 0px 10px;
 }

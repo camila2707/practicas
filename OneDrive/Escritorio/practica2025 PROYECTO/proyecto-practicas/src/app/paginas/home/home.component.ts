@@ -1,73 +1,43 @@
-import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule, NgFor } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { OfertasService } from '../../servicios/ofertas.service';
+import { Productos } from '../../model/producto.model';
 
 @Component({
   selector: 'app-home',
-  imports: [NgFor],
-  standalone:true,
+  imports: [NgFor, CommonModule, RouterLink],
+  standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
+  constructor(private ofertasService:OfertasService){}
+  productosEnOferta: Productos[] = [];
+  ngOnInit(): void {
+    this.ofertasService.ofertas$.subscribe(productos => {
+    this.productosEnOferta = productos;
+  });
+  }
 
-  array=[
-    {
-      id:1,
-      nombre:'',
-      categoria:'',
-      marca:'',
-      descripcion:'',
-      precio:2,
-      stock:0,
-      detalle:'',
-      img:'',
+  
+ 
+  
 
-    },
-    {
-      id:1,
-      nombre:'',
-      categoria:'',
-      marca:'',
-      descripcion:'',
-      precio:2,
-      stock:0,
-      detalle:'',
-      img:'',
+imagenActiva = 0;
 
-    },
-    {
-      id:1,
-      nombre:'',
-      categoria:'',
-      marca:'',
-      descripcion:'',
-      precio:2,
-      stock:0,
-      detalle:'',
-      img:'',
+  
 
-    },
-    {
-      id:1,
-      nombre:'',
-      categoria:'',
-      marca:'',
-      descripcion:'',
-      precio:2,
-      stock:0,
-      detalle:'',
-      img:'',
-
-    },
-    
-  ];
-
-  Marcas=[
-    {
-      id:'',
-      nombre:'',
-      img:'',
-    }
-  ]
-
+  activarImagen(index: number): void {
+    this.imagenActiva = index;
+  }
 }
+
+
+
+
+ 
+
+
+
+

@@ -3,19 +3,29 @@
     <img class="imgHOME" src="./assets/home.jpg" />
   </div>
 </div>
+<h2 class="ofertas">OFERTAS</h2>
+<hr />
 
-<div class="card-container">
-  <div *ngFor="let producto of array; let i = index">
-    <div class="card">
-      <img src="{{ producto.img }}" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">{{ producto.nombre }}</h5>
-        <p class="card-text">${{ producto.precio }}</p>
-        <p>{{ producto.descripcion }}</p>
-        <a href="#" class="btn btn-primary">comprar</a>
+<div class="carousel">
+  <div class="contenedor-carrusel">
+    <div class="card" *ngFor="let oferta of productosEnOferta; let i = index">
+      <img
+        class="img"
+        [src]="oferta.img"
+        alt="{{oferta.nombre}}"
+        width="100%"
+        height="100%"
+      />
+      <div class="textBox">
+        <p class="text head">{{oferta.nombre}}</p>
+        <h1>{{oferta.oferta}}%</h1>
+        <p>Descuento con tarjetas bancarias</p>
+        <p class="text price">{{oferta.precio | currency}}</p>
       </div>
     </div>
   </div>
 </div>
-<h2 class="titulomarcas">Marcas con las que trabajamos</h2>
-<hr>
+
+
+
+

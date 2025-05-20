@@ -43,7 +43,7 @@ export class CarritoService {
     console.log('Total calculado:', total);
     return total;
   }
- 
+  
  
 
   constructor() { }
