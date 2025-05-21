@@ -11,7 +11,7 @@ export class OfertasService {
 
 
   ofertas$ = this.l.asObservable().pipe(
-    map(productos => productos.filter(p => p.oferta === true))
+    map(productos => productos.filter(p => p.oferta>0))
   );
 
   cargarProductos(productos: Productos[]) {

@@ -6,6 +6,7 @@ import { QuienessomosComponent } from './paginas/quienessomos/quienessomos.compo
 import { ContactoComponent } from './paginas/contacto/contacto.component';
 import { CarritoComponent } from './paginas/carrito/carrito.component';
 import { FavoritosComponent } from './paginas/favoritos/favoritos.component';
+import { PreguntasfrecuentesComponent } from './paginas/preguntasfrecuentes/preguntasfrecuentes.component';
 
 export const routes: Routes = [
 
@@ -17,4 +18,5 @@ export const routes: Routes = [
     {path:'contacto',component:ContactoComponent},
     {path:'carrito',component:CarritoComponent},
     {path:'favoritos',component:FavoritosComponent},
+    {path:'preguntasfrecuentes',component:PreguntasfrecuentesComponent}
 ];

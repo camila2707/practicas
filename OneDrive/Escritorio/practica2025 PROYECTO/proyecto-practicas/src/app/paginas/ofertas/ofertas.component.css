@@ -47,6 +47,10 @@
 .card .btn:hover{
     background-color: rgb(255, 238, 0);
 }
+.off{
+  color: rgb(255, 0, 0);
+  margin: 0px 10px;
+}
 
 @media(max-width:600px){/*responsabilidad en pantalla chica*/
     .card-container{

@@ -8,7 +8,7 @@
 
 <div class="carousel">
   <div class="contenedor-carrusel">
-    <div class="card" *ngFor="let oferta of productosEnOferta; let i = index">
+    <div class="card" *ngFor="let oferta of productosEnOferta; let i = index" routerLink="/ofertas">
       <img
         class="img"
         [src]="oferta.img"
