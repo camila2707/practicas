@@ -1,31 +1,40 @@
-<div class="contenedor-home">
-  <div class="elhome">
-    <img class="imgHOME" src="./assets/home.jpg" />
+<div class="home" >
+  <img src="./assets/home.jpg" >
+  <div class="home-front">
+    
+    <p class="title">FERREMARKET</p>
+    
+    
   </div>
+  <div class="home-back">
+    <p><strong>FERREMARCKET es más que una tienda</strong> </p>
+    <p><strong>Es tu aliado para crear, reparar y construir con confianza.</strong></p>
+  </div>
+  
 </div>
 <h2 class="ofertas">OFERTAS</h2>
 <hr />
 
 <div class="carousel">
   <div class="contenedor-carrusel">
-    <div class="card" *ngFor="let oferta of productosEnOferta; let i = index" routerLink="/ofertas">
+    <div
+      class="card"
+      *ngFor="let oferta of productosEnOferta; let i = index"
+      routerLink="/ofertas"
+    >
       <img
         class="img"
         [src]="oferta.img"
-        alt="{{oferta.nombre}}"
+        alt="{{ oferta.nombre }}"
         width="100%"
         height="100%"
       />
       <div class="textBox">
-        <p class="text head">{{oferta.nombre}}</p>
-        <h1>{{oferta.oferta}}%</h1>
+        <p class="text head">{{ oferta.nombre }}</p>
+        <h1>{{ oferta.oferta }}%</h1>
         <p>Descuento con tarjetas bancarias</p>
-        <p class="text price">{{oferta.precio | currency}}</p>
+        <p class="text price">{{ oferta.precio | currency }}</p>
       </div>
     </div>
   </div>
 </div>
-
-
-
-
