@@ -1,11 +1,11 @@
 <h1>Carrito de compras</h1>
 
-<div *ngIf="ProductosEnCarrito.length ===0" class="noproduc">
+<div *ngIf="ProductosEnCarrito.length ===0" class="noproduc"><!--condicional para cuando no hay productos en el arreglo-->
     <p>No hay productos en el carrito</p>
 
 </div>
 
-<div *ngIf="ProductosEnCarrito.length >0" class="tabla-carrito">
+<div *ngIf="ProductosEnCarrito.length >0" class="tabla-carrito"><!--condicional de cuando hay al menos un producto en el arreglo-->
     <table class="table">
         <thead class="thead">
             <tr>
@@ -19,18 +19,18 @@
         </thead>
     
       <tbody class="tbody">
-            <tr *ngFor="let item of ProductosEnCarrito; let i=index ">
+            <tr *ngFor="let item of ProductosEnCarrito; let i=index "><!--recorre todo el arreglo para mostrar cada producto-->
                 <td><img [src]="item.producto.img" alt="{{item.producto.nombre}}" style="width: 50px; height: 50px;"></td>
                 <td>{{item.producto.nombre}}</td>
                 <td>{{item.producto.descripcion}}</td>
                 <td>{{item.producto.precio | currency}}</td>
                 <td>
-                    <button (click)="quitarCantidad(i)">-</button>
+                    <button (click)="quitarCantidad(i)">-</button><!--quita cantidad -->
                     {{item.cantidad}}
-                    <button (click)="agregarCantidad(i)">+</button>
+                    <button (click)="agregarCantidad(i)">+</button><!--añade cantidad -->
                 </td>
                 <td>
-                    <button (click)="eliminarProducto(item.producto.id)" class="eliminar">Eliminar</button>
+                    <button (click)="eliminarProducto(item.producto.id)" class="eliminar">Eliminar</button><!--elimina los productos del carrito-->
                 </td>
             </tr>
         </tbody>
@@ -38,12 +38,17 @@
         <tfoot>
             <tr>
                 <td colspan="5" class="tfot">Total a pagar</td>
-                <td >{{calcularTotal() | currency}}</td>
+                <td >{{calcularTotal() | currency}}</td><!--el total a pagar de los productos-->
             </tr>
         </tfoot>
     </table>
 
-    <button (click)="realizarCompra()" class="btn btn-success">Realizar compra</button>
+   <div class="text-end mt-4" *ngIf=" ProductosEnCarrito.length>0">
+    <h4 class="fw-blod"> Total:{{calcularTotal() | currency}}</h4>
+    <button class="btn btn-primary mt-2" (click)="irAFormulario()">
+        <i class="bi bi-cart-check"></i>Realizar compra
+    </button>
+</div>
     
 
 </div>

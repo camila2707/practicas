@@ -1,0 +1,135 @@
+<h2 class="text-center mb-4">Formulario de compra</h2>
+<form [formGroup]="formularioCompra" (ngSubmit)="finalizarCompra()" class="mx-auto" style="max-width: 600px;">
+    <!--campos del formulario-->
+    <div class="row g-3 mb-3">
+        <div class="col-md-6"><!--campo del nombre-->
+            <label for="nombre" class="form-label fw-semibold">Nombre<span class="text-danger">*</span></label>
+            <div class="input-group">
+               <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+            <input id="nombre" formControlName="nombre" class="form-control" placeholder="Tu Nombre Completo">
+            </div>
+        </div>
+        <div *ngIf="formularioCompra.get('nombre')?.touched&& formularioCompra.get('nombre')?.invalid" class="form-text text-danger">
+            El nombre es obligatorio
+        </div>
+    
+
+    
+        <div class="mb-3"><!--campo de direccion-->
+            <label for="direccion" class="form-label fw-semibold">Direccion<span class="text-danger">*</span></label>
+            <div class="input-group">
+               <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+               <input id="direccion" formControlName="direccion" class="form-control" placeholder="calle, numero, piso,dpto">
+            </div>
+        </div>
+        <div *ngIf="formularioCompra.get('direccion')?.touched&& formularioCompra.get('direccion')?.invalid" class="form-text text-danger">
+            La direccion es obligatoria
+        </div>
+    
+
+ 
+        <div class="mb-3"><!--campo de correo electronico-->
+            <label for="correo" class="form-label fw-semibold">Correo Electronico<span class="text-danger">*</span></label>
+            <div class="input-group">
+             <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+             <input type="email" id="correo" formControlName="correo" class="form-control" placeholder="ejemplo@gmail.com">
+            </div>
+        </div>
+        <div *ngIf="formularioCompra.get('correo')?.touched&& formularioCompra.get('correo')?.invalid" class="form-text text-danger">
+            El correo es obligatorio
+        </div>
+   
+
+   
+        <div class="col-md-4"><!--campo de telefono-->
+            <label for="telefono" class="form-label fw-semibold">Telefono<span class="text-danger">*</span></label>
+            <div class="input-group">
+             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+             <input id="telefono" formControlName="telefono" class="form-control" placeholder="Tu Telefono Completo">
+            </div>
+        </div>
+        <div *ngIf="formularioCompra.get('telefono')?.touched&& formularioCompra.get('telefono')?.invalid" class="form-text text-danger">
+            El telefono es obligatorio
+        </div>
+   
+
+   
+        <div class="col-md-4"><!--campo de ciudad-->
+            <label for="ciudad" class="form-label fw-semibold">Ciudad<span class="text-danger">*</span></label>
+            <div class="input-group">
+             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+             <input id="ciudad" formControlName="ciudad" class="form-control" placeholder="Cipolletti">
+            </div>
+        </div>
+        <div *ngIf="formularioCompra.get('ciudad')?.touched&& formularioCompra.get('ciudad')?.invalid" class="form-text text-danger">
+            La ciudad es obligatoria
+        </div>
+    
+    
+        <div class="col-md-4"><!--campo de provincia-->
+            <label for="provincia" class="form-label fw-semibold">Provincia<span class="text-danger">*</span></label>
+            <div class="input-group">
+             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+             <input id="provincia" formControlName="provincia" class="form-control" placeholder="Rio Negro">
+            </div>
+        </div>
+        <div *ngIf="formularioCompra.get('provincia')?.touched&& formularioCompra.get('provincia')?.invalid" class="form-text text-danger">
+            La provincia es obligatoria
+        </div>
+
+        <div class="col-md-4"><!--campo de codigo postal-->
+            <label for="codigoPostal" class="form-label fw-semibold">Codigo Postal<span class="text-danger">*</span></label>
+            <div class="input-group">
+             <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+             <input id="codigoPostal" formControlName="codigoPostal" class="form-control" placeholder=" EJ:1428">
+            </div>
+        </div>
+        <div *ngIf="formularioCompra.get('codigoPostal')?.touched&& formularioCompra.get('codigoPostal')?.invalid" class="form-text text-danger">
+            El codigo potal es obligatorio
+        </div>
+
+        
+        <div class="col-md-6"><!--campo de metodo de pago-->
+            <label for="metododePago" class="form-label fw-semibold">Metodo de pago<span class="text-danger">*</span></label>
+            <select id="metododePago" formControlName="metododePago" class="form-select">
+                <option value="" selected disabled > Seleccione el metodo de pago</option>
+                <option value="tarjeta">Tarjeta de credito/debito</option>
+                <option value="efectivo">Efectivo</option>
+                <option value="trasferencia">Tranferencia</option>
+            </select>
+        </div>
+        <div *ngIf="formularioCompra.get('metododePago')?.touched&& formularioCompra.get('metododePago')?.invalid" class="form-text text-danger">
+            Debes seleccionar un metodo de pago
+        </div>
+
+        <div class="d-flex justify-content-between aling-items-center my-4">
+            <div>
+                <p>Envio: ${{envio.toFixed(2)}}</p><!--costo de envio-->
+                <p><strong>Total a Pagar:{{calcularTotal()|currency}}</strong></p><!--el total a pagar incluyendo el costo de envio-->
+            </div>
+            
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="finalizarCompra()">Finalizar Compra</button><!--boton para finalizar la compra-->
+    </div>
+
+</form>
+
+<!--PDF-->
+<div *ngIf="mostrarModal" class="modal show d-block" tabindex="-1" role="dialog" style="background:rgba(0, 0, 0, 0.5);">
+    <div class="modal-dialog modal-xl" role="document" style="max-width: 90vw;max-height: 90vh;">
+        <div class="modal-content" style="height: 90vh;">
+            <div class="modal header">
+                <h5 class="modal-title">Factura PDF</h5>
+                <button class="btn-close" type="button" aria-label="cerrar" (click)="cerrarModal()"></button>
+            </div>
+            <div class="modal-body p-0" style="height: 80vh;">
+                <iframe *ngIf="pdfSrc" [src]="pdfSrc" id="pdfframe"
+                style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="imprimirPDF()">Imprimir</button>
+                <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrrar</button>
+            </div>
+        </div>
+    </div>
+</div>
