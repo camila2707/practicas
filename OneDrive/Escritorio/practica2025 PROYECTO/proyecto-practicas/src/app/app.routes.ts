@@ -8,6 +8,8 @@ import { CarritoComponent } from './paginas/carrito/carrito.component';
 import { FavoritosComponent } from './paginas/favoritos/favoritos.component';
 import { PreguntasfrecuentesComponent } from './paginas/preguntasfrecuentes/preguntasfrecuentes.component';
 import { CompraComponent } from './paginas/compra/compra.component';
+import { InicioSesionComponent } from './shared/inicio-sesion/inicio-sesion.component';
+import { RegistroComponent } from './shared/registro/registro.component';
 
 export const routes: Routes = [
 
@@ -21,4 +23,6 @@ export const routes: Routes = [
     {path:'favoritos',component:FavoritosComponent},
     {path:'preguntasfrecuentes',component:PreguntasfrecuentesComponent},
     {path:'compra',component:CompraComponent},
+    {path:'iniciosesion',component:InicioSesionComponent},
+    {path:'registro',component:RegistroComponent}
 ];

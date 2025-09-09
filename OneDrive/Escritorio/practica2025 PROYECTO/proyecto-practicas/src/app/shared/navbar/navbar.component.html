@@ -11,8 +11,6 @@
     <a class="btn" routerLink="/carrito">
       <i class="fa-solid fa-cart-shopping"></i>
     </a>
-    
-
 
     <form class="d-flex" role="search">
       <input
@@ -25,7 +23,14 @@
     </form>
     <a class="btn" routerLink="/favoritos">
       <i class="fa-solid fa-star"></i>
-      
     </a>
+
+    <a class="btn" routerLink="/iniciosesion">
+      <i class="fa-solid fa-user"></i>
+    </a>
+    <label for="toggle" id="label_toggle" class="btn">
+      <i class="fa-solid fa-moon"></i>
+    </label>
+    <input type="checkbox" id="toggle" (click)="cambiarFondo()">
   </div>
 </div>

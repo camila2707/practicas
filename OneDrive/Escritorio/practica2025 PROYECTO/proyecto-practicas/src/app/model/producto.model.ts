@@ -10,5 +10,6 @@ export interface Productos{
     oferta:number;
     stock:number;
     caracteristicas:string;
+    marca:string;
 
 }

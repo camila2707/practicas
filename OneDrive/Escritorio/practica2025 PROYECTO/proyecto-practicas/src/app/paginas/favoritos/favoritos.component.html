@@ -2,47 +2,19 @@
 <div *ngIf="productosEnFavoritos.length === 0" class="noproduc">
   <p>No hay productos favoritos</p>
 </div>
-<div class="card-container">
+<div *ngIf="productosEnFavoritos.length >0" class="card-container" >
   <div *ngFor="let item of productosEnFavoritos; let i = index">
     <div class="card">
-      <label title="Star" class="star" (click)="eliminarF(item.producto.id)">
-        <input id="star-checkbox" class="checkbox" type="checkbox" />
-        <div class="svg-container">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="svg-outline"
-            viewBox="0 0 24 24"
-          >
+      
+        <input type="checkbox" id="star" />
+        <label for="star" (click)="eliminarF(item.producto.id)">
+          <svg viewBox="0 0 24 24">
             <path
-              d="M12 2.5L9.45 8.5L3 9.06L7.725 13.39L6.25 19.82L12 16.5L17.75 19.82L16.275 13.39L21 9.06L14.55 8.5L12 2.5ZM12 4.75L14 9.33L18.7 9.75L15 13.07L16.18 17.75L12 15.16L7.82 17.75L9 13.07L5.3 9.75L10 9.33L12 4.75Z"
+              d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
             ></path>
           </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="svg-filled"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 2.5L9.45 8.5L3 9.06L7.725 13.39L6.25 19.82L12 16.5L17.75 19.82L16.275 13.39L21 9.06L14.55 8.5L12 2.5Z"
-            ></path>
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="100"
-            width="100"
-            class="svg-celebrate"
-          >
-            <circle r="2" cy="50" cx="50" class="particle"></circle>
-            <circle r="2" cy="50" cx="50" class="particle"></circle>
-            <circle r="2" cy="50" cx="50" class="particle"></circle>
-            <circle r="2" cy="50" cx="50" class="particle"></circle>
-            <circle r="2" cy="50" cx="50" class="particle"></circle>
-            <circle r="2" cy="50" cx="50" class="particle"></circle>
-            <circle r="2" cy="50" cx="50" class="particle"></circle>
-            <circle r="2" cy="50" cx="50" class="particle"></circle>
-          </svg>
-        </div>
-      </label>
+        </label>
+    
       <img
         [src]="item.producto.img"
         alt="{{ item.producto.nombre }}"

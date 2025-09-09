@@ -1,0 +1,58 @@
+<div class="contenedor">
+  <form [formGroup]="formularioInicio">
+    <div class="form-container">
+      <p class="title">¡Bienvenido!</p>
+      <form class="form">
+        <input
+          
+          id="nombre"
+          formControlName="nombre"
+          class="form-control"
+          placeholder="Nombre de usuario"
+
+        />
+
+        <div
+          *ngIf="
+            formularioInicio.get('nombre')?.touched &&
+            formularioInicio.get('nombre')?.invalid
+          "
+          class="form-text text-danger"
+        >
+          El correo es obligatorio
+        </div>
+
+        <input
+          type="password"
+          id="contra"
+          formControlName="contra"
+          class="form-control"
+          placeholder="Contraseña"
+        
+        />
+
+        <div
+          *ngIf="
+            formularioInicio.get('contra')?.touched &&
+            formularioInicio.get('contra')?.invalid 
+          "
+          class="form-text text-danger"
+        >
+          La contraseña es obligatoria
+        </div>
+
+        <p class="page-link">
+          <span class="page-link-label">¿Olvidaste tu contraseña?</span>
+        </p>
+        <button class="form-btn">Iniciar sesion</button>
+      </form>
+      <p class="sign-up-label">
+        ¿No tienes cuenta?<span class="sign-up-link" routerLink="/registro"> Registrarse</span>
+      </p>
+      <div class="buttons-container">
+        
+        
+      </div>
+    </div>
+  </form>
+</div>

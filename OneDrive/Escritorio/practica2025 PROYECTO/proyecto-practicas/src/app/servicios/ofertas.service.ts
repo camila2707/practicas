@@ -7,14 +7,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class OfertasService {
-  private l = new BehaviorSubject<Productos[]>([]);
+  private ofertaSubject = new BehaviorSubject<Productos[]>([]);
 
 
-  ofertas$ = this.l.asObservable().pipe(
+  ofertas$ = this.ofertaSubject.asObservable().pipe(
     map(productos => productos.filter(p => p.oferta>0))
   );
 
   cargarProductos(productos: Productos[]) {
-    this.l.next(productos);
+    this.ofertaSubject.next(productos);
   }
 }

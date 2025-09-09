@@ -22,7 +22,7 @@ productosEnOferta: Productos[] = [];
   ) { }
 
  ngOnInit(): void {
-  this.ofertasService.ofertas$.subscribe(productos => {
+  this.ofertasService.ofertas$.subscribe(productos => {//subscribe hace que sea visible
     this.productosEnOferta = productos;
   });
 }

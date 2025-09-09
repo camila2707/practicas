@@ -1,4 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 body{
     background-color: rgb(242, 242, 242);
+    transition: all 1.5s ease;
 }
+#toggle{
+    display: none;
+}
+#label{
+    position: static;
+    cursor: pointer;
+}
+.dark{
+    background-color: black;
+    color: white;
+    transition: all 1.5s ease;
+}
+/*Para modo oscuro*/

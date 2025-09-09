@@ -1,17 +1,33 @@
-<div class="home" >
-  <img src="./assets/home.jpg" >
+<div class="home">
+  <img src="./assets/home.jpg" />
   <div class="home-front">
-    
     <p class="title">FERREMARKET</p>
-    
-    
   </div>
   <div class="home-back">
-    <p><strong>FERREMARCKET es más que una tienda</strong> </p>
-    <p><strong>Es tu aliado para crear, reparar y construir con confianza.</strong></p>
+    <p><strong>FERREMARCKET es más que una tienda</strong></p>
+    <p>
+      <strong
+        >Es tu aliado para crear, reparar y construir con confianza.</strong
+      >
+    </p>
   </div>
-  
 </div>
+<hr>
+
+
+<h2 class="mtitulo"><strong>Marcas con las que trabajamos</strong></h2>
+<hr>
+<div class="marcas">
+  <img src="./assets/1evel.jpg" class="m" />
+  <img src="./assets/2Gramabi.jpg" class="m" />
+  <img src="./assets/3Black+Decker.png" class="m" />
+  <img src="./assets/4Lusqtoff.png" class="m" />
+  <img src="./assets/5Daewoo.jpg" class="m"/>
+  <img src="./assets/7dewalt.png" class="m"/>
+  <img src="./assets/8Bosch.webp" class="m"/>
+  <img src="./assets/9Total.jpg" class="m"/>
+</div>
+<hr>
 <h2 class="ofertas">OFERTAS</h2>
 <hr />
 
@@ -38,3 +54,30 @@
     </div>
   </div>
 </div>
+<hr>
+<div class="barra">
+  
+    <ng-container *ngIf="lgos.length>0">
+      <div *ngFor="let e of lgos" class="benef">
+        <img [src]="e.img" class="B">
+        <h3>{{e.esc}}</h3>
+
+
+      </div>
+    </ng-container>
+    
+  
+</div>
+<hr>
+<div class="ult">
+  <div class="cancelar">
+    <p>¿Te arrepentiste de comprar?</p>
+    <a routerLink="/preguntasfrecuentes">Como cancelar la compra</a>
+  </div>
+
+  <div class="normas">
+    <p>¿Conoces las normas que protegen tus compras?</p>
+    <a routerLink="/preguntasfrecuentes">Ley 24.240 de defensa del consumidor</a>
+  </div>
+</div>
+<hr>
