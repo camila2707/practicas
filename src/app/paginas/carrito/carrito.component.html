@@ -1,0 +1,137 @@
+<!--<h1>Carrito de compras</h1>
+
+<div *ngIf="carrito.length ===0" class="noproduc">condicional para cuando no hay productos en el arreglo
+    <p>No hay productos en el carrito</p>
+
+</div>
+
+<div *ngIf="carrito.length >0" class="tabla-carrito">condicional de cuando hay al menos un producto en el arreglo
+    <table class="table">
+        <thead class="thead">
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+    
+      <tbody class="tbody">
+            <tr *ngFor="let item of carrito; let i=index "><recorre todo el arreglo para mostrar cada producto
+                <td><img [src]="item.producto.img" alt="{{item.producto.nombre}}" style="width: 50px; height: 50px;"></td>
+                <td>{{item.producto.nombre}}</td>
+                <td>{{item.producto.descripcion}}</td>
+                <td>{{item.producto.precio | currency}}</td>
+                <td>
+                    <button (click)="cambiarCantidad()">-</button>quita cantidad 
+                    {{item.cantidad}}
+                    <button (click)="agregarCantidad(i)">+</button>añade cantidad
+                </td>
+                <td>
+                    <button (click)="eliminar(item.producto.id)" class="eliminar">Eliminar</button>elimina los productos del carrito
+                </td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="5" class="tfot">Total a pagar</td>
+               <td >{{calcularTotal() | currency}}</td>el total a pagar de los productos
+            </tr>
+        </tfoot>
+    </table>
+
+   <div class="text-end mt-4" *ngIf=" carrito.length>0">
+   <h4 class="fw-blod"> Total:{{calcularTotal() | currency}}</h4>
+    <button class="btn btn-primary mt-2" (click)="irACompra()">
+        <i class="bi bi-cart-check"></i>Realizar compra
+    </button>
+</div>
+    
+
+</div>-->
+<div class="tabla-carrito">
+  <h2 class="mb-3">Carrito de compras</h2>
+
+  <div *ngIf="carrito.length > 0; else vacio">
+    <table class="table table-striped align-middle">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of carrito">
+          <td>
+            <img
+              *ngIf="item.Imagen"
+              [src]="
+                'http://localhost/api_proyecto/public/uploads/' + item.Imagen
+              "
+              class="thumb"
+            />
+          </td>
+
+          <td>
+            <strong>{{ item.nombre }}</strong>
+          </td>
+
+          <td>$ {{ item.precio_unitario }}</td>
+
+          <td>
+            <input
+              type="number"
+              min="1"
+              class="form-control"
+              [value]="item.cantidad"
+              (change)="cambiarCantidad(item.id_detalle_carrito, $event)"
+            />
+          </td>
+
+          <td>$ {{ item.subtotal }}</td>
+
+          <td>
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="eliminar(item.id_detalle_carrito)"
+            >
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="text-end mt-4">
+      <p>
+        Subtotal: <strong>$ {{ total }}</strong>
+      </p>
+      <p>
+        Envío: <strong>$ {{ envio }}</strong>
+      </p>
+      <p>
+        Total: <strong>$ {{ total + envio }}</strong>
+      </p>
+
+      <button class="btn btn-outline-danger me-2" (click)="vaciarCarrito()">
+        Vaciar carrito
+      </button>
+
+      <button class="btn btn-primary" (click)="irACompra()">
+        Finalizar compra
+      </button>
+    </div>
+  </div>
+
+  <ng-template #vacio>
+    <div class="alert alert-warning text-center">Tu carrito está vacío.</div>
+  </ng-template>
+</div>

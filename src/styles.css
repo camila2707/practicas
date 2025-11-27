@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: rgb(242, 242, 242);
+    transition: all 1.5s ease;
+}
+#toggle{
+    display: none;
+}
+#label{
+    position: static;
+    cursor: pointer;
+}
+.dark{
+    background-color: black;
+    color: white;
+    transition: all 1.5s ease;
+    
+}
+.dark .card  {
+    background-color: rgb(67, 67, 67);
+    color: white;
+   
+}
+.dark .card .botonDC{
+    background-color: rgb(67, 67, 67);
+   color: rgb(117, 117, 117);
+}
+.dark .card .off{
+    color: white;
+}
+.dark .barra .benef{
+    background-color: rgb(126, 126, 126)  ;
+    color: black;
+    border-radius: 5px;
+    border: none;
+}
+.dark div .sinproducfil{
+    color: white;
+}
+.dark .ult .cancelar {
+    background-color:  rgb(126, 126, 126) ;
+    color: black;
+}
+.dark .ult .normas {
+    background-color:  rgb(126, 126, 126) ;
+    color: black;
+}
+    
+/*Para modo oscuro*/

@@ -1,0 +1,135 @@
+.pie-pagina {
+    width: 100%;
+    background-color: rgb(255, 149, 0);
+    margin-top: 210px;
+    position:absolute;
+  }
+  
+  .pie-pagina .grupo-1 {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+    align-items: start;
+  }
+  
+  .pie-pagina .grupo-1 .box figure {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-footer{
+    width: auto;
+    object-fit: contain;
+    height: 250px;
+    max-width: 100%;
+    border-radius: 5px;
+    background-color: rgb(190, 111, 0);
+  }
+  
+  .red-social {
+    display: flex;
+    justify-content: center;
+    /* Centra los logos */
+    align-items: center;
+    flex-wrap: wrap;
+    /* Permite que se envuelvan */
+    gap: 40px;
+    /* Espacio entre logos */
+  }
+  
+  .img-x {/*boton de x*/
+    width: 40px;
+    object-fit: contain;
+    height: 40px;
+    max-width: 100%;
+    background-color: rgb(190, 111, 0);
+    border-radius: 5px;
+    
+  }
+  
+  .img-x:hover {
+   
+    background-color: #000000;
+  }
+  
+  .img-f{/*boton de facebook*/
+    width: 40px;
+    object-fit: contain;
+    height: 40px;
+    max-width: 100%;
+    background-color: rgb(190, 111, 0);
+    border-radius: 5px;
+  
+  }
+  .img-f:hover{
+    
+    background-color: #000000;
+  
+  }
+  
+  .img-w{/*boton de whatsApp*/
+    width: 40px;
+    object-fit: contain;
+    height: 40px;
+    max-width: 100%;
+    background-color: rgb(190, 111, 0);
+    border-radius: 5px;
+  
+  }
+  .img-w:hover{
+   
+    background-color: #000000;
+  
+  }
+  
+  .img-ins{ /*boton de instagram*/
+    width: 40px;
+    object-fit: contain;
+    height: 40px;
+    max-width: 100%;
+    background-color: rgb(190, 111, 0);
+    border-radius: 5px;
+  
+  }
+  .img-ins:hover{
+   
+    background-color: #000000;
+  
+  }
+  
+  .pie-pagina .grupo-1 .box h2 {
+    color: #000000;
+    margin-bottom: 25px;
+    font-size: 20px;
+  }
+  
+  .pie-pagina .grupo-1 .box p {
+    color: #000000;
+    margin-bottom: 10px;
+  }
+  
+  .pie-pagina .grupo-2 {
+    color: #000000;
+    padding: 15px 10px;
+    text-align: center;
+    background-color: rgb(190, 111, 0);
+  }
+  
+  .logo-footer {
+    display: flex;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+  }
+
+  a{
+    color: #000000;
+  }
+  

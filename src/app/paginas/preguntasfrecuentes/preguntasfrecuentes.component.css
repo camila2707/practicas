@@ -1,0 +1,15 @@
+.contenedor{
+    width: 100%;
+    margin: 5px;
+    align-items: center;
+}
+.preguntas{
+    width: 70%;
+    text-align: left;
+    
+    margin: 20px 20% 0px 20%;
+
+}
+.preguntas h1{
+    color: red;
+}

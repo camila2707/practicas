@@ -1,0 +1,42 @@
+
+
+.quienessomos {
+  padding: 3rem 1.5rem;
+ 
+}
+
+.quienessomos .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quienessomos h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+ 
+}
+
+.quienessomos p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  
+  margin-bottom: 1rem;
+}
+
+.quienessomos ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1.5rem;
+}
+
+.quienessomosli {
+  padding-left: 1.2em;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.quienessomos li::before {
+
+  position: absolute;
+  left: 0;
+}

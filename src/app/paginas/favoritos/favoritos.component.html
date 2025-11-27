@@ -1,0 +1,54 @@
+<h1>Favoritos</h1>
+<div *ngIf="productosEnFavoritos.length === 0" class="noproduc">
+  <p>No hay productos favoritos</p>
+</div>
+<div *ngIf="productosEnFavoritos.length >0" class="card-container" >
+  <div *ngFor="let item of productosEnFavoritos; let i = index">
+    <div class="card">
+      
+        <input type="checkbox" id="star" />
+        <label for="star" (click)="eliminarF(item.producto.Id_productos)">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
+            ></path>
+          </svg>
+        </label>
+    
+      <img
+        [src]="item.producto.Imagen"
+        alt="{{ item.producto.Nombre }}"
+        class="card-img-top"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.producto.Nombre }}</h5>
+        <h4 class="card-text">{{ item.producto.Precio | currency }}</h4>
+        <button (click)="mostrardescripcion(item.producto)" class="botonDC">
+          Ver descripción
+        </button>
+
+        <!-- Mostrar solo si es el producto seleccionado " -->
+        <p *ngIf="productoSeleccionado === item.producto">
+          <strong>Descripción:</strong> {{ item.producto.Descripcion }}
+        </p>
+
+        <button (click)="mostrarcaracteristicas(item.producto)" class="botonDC">
+          Ver caracteristicas
+        </button>
+
+        <!-- Mostrar solo si es el producto seleccionado -->
+        <p *ngIf="productoSeleccionadoC === item.producto">
+          <strong>Caracteristicas:</strong> {{ item.producto.caracteristicas }}
+        </p>
+
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="agregar(item.producto)"
+        >
+          Agregar al carrito
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

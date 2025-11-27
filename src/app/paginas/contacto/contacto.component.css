@@ -1,0 +1,121 @@
+.contendor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contenedor2 {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  display: flex;
+}
+.contenedor-contacto {
+  width: 30%;
+
+  
+  height: 100%;
+  text-align: center;
+}
+input{
+  border-radius: 5px;
+  border: none;
+  
+}
+.contenedor-formulario {
+  width: 70%;
+  
+  overflow: hidden;
+  border-radius: 10px;
+
+  text-align: center;
+  justify-content: end;
+}
+.mensaje {
+  width: 500px;
+  height: 300px;
+  text-align: left;
+}
+form {
+  padding: 40 px;
+
+  text-align: center;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 2px;
+  margin: 20px 25%;
+}
+input {
+  margin: 0px 10px;
+}
+button {
+  margin: 0px 0px 5px 0px;
+}
+
+.contac {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: #747474;
+  margin: 10px 15px;
+  
+}
+
+.contac img {
+  width: 30px;
+  height: auto;
+  object-fit: scale-down;
+ 
+
+  
+}
+
+.text {
+  position: absolute;
+  opacity: 0;
+  width: auto;
+  padding: 10px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: 0.3s;
+}
+
+.s {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  fill: white;
+  transition-duration: 0.3s;
+}
+
+.contac:hover {
+  width: 300px;
+  border-radius: 40px;
+  justify-content: left;
+}
+
+.contac:hover .text {
+  opacity: 1;
+  width: 70%;
+  padding-left: 150px;
+}
+
+.contac:hover .s {
+  width: auto;
+  padding-left: 10px;
+}
+
+.contac:active {
+  transform: translate(2px, 2px);
+}

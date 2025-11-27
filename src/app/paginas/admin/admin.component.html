@@ -1,0 +1,109 @@
+<div class="admin-container">
+
+  <h2 class="titulo">Panel de Administración</h2>
+
+  <!-- FORMULARIO -->
+  <form [formGroup]="formulario" (ngSubmit)="guardar()" class="form-card">
+
+    <div class="fila">
+      <div class="campo">
+        <label>Nombre</label>
+        <input formControlName="Nombre" class="input" />
+      </div>
+
+      <div class="campo">
+        <label>Precio</label>
+        <input formControlName="Precio" type="number" class="input" />
+      </div>
+
+      <div class="campo">
+        <label>Oferta</label>
+        <input formControlName="oferta" type="number" class="input" />
+      </div>
+
+      <div class="campo">
+        <label>Stock</label>
+        <input formControlName="Stock" type="number" class="input" />
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>Descripción</label>
+      <textarea formControlName="Descripcion" rows="3" class="input"></textarea>
+    </div>
+
+    <div class="campo">
+      <label>Caracteristicas</label>
+      <textarea formControlName="caracteristicas" rows="3" class="input"></textarea>
+    </div>
+
+     <div class="campo">
+      <label>Categoria</label>
+      <textarea formControlName="categoria" rows="3" class="input"></textarea>
+    </div>
+
+     <div class="campo">
+      <label>Marca</label>
+      <textarea formControlName="marca" rows="3" class="input"></textarea>
+    </div>
+
+    <div class="campo">
+      <label>Imagen</label>
+      <input type="file" (change)="onFileChange($event)" class="input" />
+    </div>
+
+    <div class="preview" *ngIf="imagenPrevia">
+      <img [src]="imagenPrevia" />
+    </div>
+
+    <div class="acciones">
+      <button class="btn guardar" type="submit">
+        {{ editando ? 'Actualizar' : 'Crear' }} Producto
+      </button>
+
+      <button class="btn limpiar" type="button" (click)="reset()">
+        Limpiar
+      </button>
+    </div>
+  </form>
+
+  <!-- LISTA DE PRODUCTOS -->
+  <h3 class="subtitulo">Productos existentes</h3>
+
+  <div class="tabla-container">
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of productos">
+          <td>{{ p.Id_productos }}</td>
+
+          <td>
+            <img *ngIf="p.Imagen"
+                 [src]="'http://localhost/api_proyecto/public/uploads/' + p.Imagen"
+                 class="thumb" />
+          </td>
+
+          <td>{{ p.Nombre }}</td>
+          <td>$ {{ p.Precio }}</td>
+          <td>{{ p.Stock }}</td>
+
+          <td class="acciones-tabla">
+            <button class="btn editar" (click)="editar(p)">Editar</button>
+            <button class="btn eliminar" (click)="eliminar(p.Id_productos)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

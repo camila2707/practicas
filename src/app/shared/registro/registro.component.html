@@ -1,0 +1,66 @@
+<div class="contenedor">
+  <div class="formulario">
+    <h2 class="text-center mb-4 fw-bold">Crear cuenta</h2>
+
+    <form (ngSubmit)="registrar()" class="form">
+      <!-- Nombre -->
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre completo</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          class="form-control"
+          [(ngModel)]="nuevoUsuario.Nombre"
+          required
+        />
+      </div>
+
+      <!-- Correo electrónico -->
+      <div class="mb-3">
+        <label for="Email" class="form-label">Correo electrónico</label>
+        <input
+          type="Email"
+          id="Email"
+          name="Email"
+          class="form-control"
+          [(ngModel)]="nuevoUsuario.Email"
+          required
+        />
+      </div>
+
+      <!-- Contraseña -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          [(ngModel)]="nuevoUsuario.Password"
+          minlength="4"
+          required
+        />
+        <div class="form-text">Mínimo 4 caracteres.</div>
+      </div>
+
+      <!-- Botón -->
+      <div class="d-grid">
+        <button type="submit" class="btn">Crear cuenta</button>
+      </div>
+
+      <!-- Mensaje de error -->
+      <p *ngIf="error" class="text-danger text-center mt-3">
+        {{ error }}
+      </p>
+    </form>
+
+    <!-- Enlace a iniciar sesión -->
+    <div class="text-center mt-3">
+      <small>
+        ¿Ya tenés cuenta?
+        <a routerLink="/iniciosesion">Iniciá sesión</a>
+      </small>
+    </div>
+  </div>
+</div>

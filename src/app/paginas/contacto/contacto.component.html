@@ -1,0 +1,133 @@
+<div class="contenedor">
+  <div class="contenedor2">
+    <div class="contenedor-contacto">
+      <strong><h1>Contacto</h1></strong>
+      <p>Lunes a Viernes de 8:00 a 16:00hs</p>
+
+      <!--boton de whatsApp-->
+
+      <button class="contac">
+        <div class="s">
+          <img src="./assets/whatsapplogo.png" />
+          <div class="text">+542990000000</div>
+        </div>
+      </button>
+
+      <!--boton de facebook-->
+
+      <button class="contac">
+        <div class="s">
+          <img src="./assets/facebooklogo.png" />
+          <div class="text">Ferremarket</div>
+        </div>
+      </button>
+
+      <!--boton de instagram-->
+
+      <button class="contac">
+        <div class="s">
+          <img src="./assets/logointagram1-removebg-preview.png" />
+          <div class="text">Ferremarket</div>
+        </div>
+      </button>
+
+      <!--logo de X-->
+      <button class="contac">
+        <div class="s">
+          <img src="./assets/logdex-removebg-preview.png" />
+          <div class="text">Ferremarket</div>
+        </div>
+      </button> 
+
+      <!--logo de telefono-->
+      <button class="contac">
+        <div class="s">
+          <img src="./assets/logotelefono.png" />
+          <div class="text">080000000</div>
+        </div>
+      </button> 
+      <!--log de gmail-->
+      <button class="contac">
+        <div class="s">
+          <img src="./assets/logogmail.png" />
+          <div class="text">holagmail.com</div>
+        </div>
+      </button> 
+
+
+    </div>
+    <div class="contenedor-formulario">
+      <form [formGroup]="registroForm" (ngSubmit)="onSumit()">
+        <legend>
+          <strong><h1>Formulario de registro</h1></strong>
+        </legend>
+        <hr />
+
+        <!--nombre-->
+        <label for="nombre">Nombre </label>
+        <input type="text" id="nombre" formControlName="nombre" />
+        <ng-container *ngIf="nombreA.invalid && nombreA.touched">
+          <ng-container *ngIf="nombreA.errors?.['minLength']">
+            <div class="alert alert-danger">
+              El nombre debe tener al menos 3 caracteres
+            </div>
+          </ng-container>
+          <ng-container *ngIf="nombreA.errors?.['required']">
+            <div class="alert alert-danger">El nombre es requerido</div>
+          </ng-container>
+        </ng-container>
+
+        <hr />
+
+        <!--email-->
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" />
+        <ng-container *ngIf="emailA.invalid && emailA.touched">
+          <ng-container *ngIf="emailA.errors?.['required']">
+            <div class="alert alert-danger">el email es obligatorio</div>
+          </ng-container>
+          <ng-container *ngIf="emailA.errors?.['email']">
+            <div class="alert alert-danger">
+              el formato del email no es valido
+            </div>
+          </ng-container>
+        </ng-container>
+        <hr />
+
+        <!--telefono-->
+        <label for="numero">Telefono</label>
+        <input type="number" id="numero" formControlName="numero" />
+        <ng-container *ngIf="telA.invalid && telA.touched">
+          <ng-container *ngIf="telA.errors?.['required']">
+            <div class="alert alert-danger">El numero es obligatorio</div>
+          </ng-container>
+          <ng-container *ngIf="telA.errors?.['min'] ">
+            <div class="alert alert-danger">El minimo es 9</div>
+          </ng-container>
+        </ng-container>
+        <hr />
+
+        <!--mensaje-->
+        <label for="mensaje">Mensaje </label>
+        <textarea
+          type="text"
+          id="mensaje"
+          formControlName="mensaje"
+          class="mensaje"
+        ></textarea>
+
+        <ng-container *ngIf="mensaJ.invalid && mensaJ.touched">
+          <ng-container *ngIf="mensaJ.errors?.['required']">
+            <div class="alert alert-danger">El mensaje es requerido</div>
+          </ng-container>
+        </ng-container>
+
+        <hr />
+        <!--boton-->
+        <button class="btn btn-secondary" [disabled]="registroForm.invalid">
+          Enviar formulario
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

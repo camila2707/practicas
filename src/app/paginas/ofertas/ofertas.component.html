@@ -1,0 +1,83 @@
+<div class="card-container">
+  <ng-container *ngIf="productosEnOferta.length > 0">
+    <ng-container *ngFor="let item of productosEnOferta">
+      <div  class="card">
+        <label title="Star" class="star" (click)="agregarfavorito(item)">
+          <input id="star-checkbox" class="checkbox" type="checkbox" />
+          <div class="svg-container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="svg-outline"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2.5L9.45 8.5L3 9.06L7.725 13.39L6.25 19.82L12 16.5L17.75 19.82L16.275 13.39L21 9.06L14.55 8.5L12 2.5ZM12 4.75L14 9.33L18.7 9.75L15 13.07L16.18 17.75L12 15.16L7.82 17.75L9 13.07L5.3 9.75L10 9.33L12 4.75Z"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="svg-filled"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2.5L9.45 8.5L3 9.06L7.725 13.39L6.25 19.82L12 16.5L17.75 19.82L16.275 13.39L21 9.06L14.55 8.5L12 2.5Z"
+              ></path>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="100"
+              width="100"
+              class="svg-celebrate"
+            >
+              <circle r="2" cy="50" cx="50" class="particle"></circle>
+              <circle r="2" cy="50" cx="50" class="particle"></circle>
+              <circle r="2" cy="50" cx="50" class="particle"></circle>
+              <circle r="2" cy="50" cx="50" class="particle"></circle>
+              <circle r="2" cy="50" cx="50" class="particle"></circle>
+              <circle r="2" cy="50" cx="50" class="particle"></circle>
+              <circle r="2" cy="50" cx="50" class="particle"></circle>
+              <circle r="2" cy="50" cx="50" class="particle"></circle>
+            </svg>
+            
+          </div>
+         
+        </label>
+         <h2 class="off">{{item.oferta}}% OFF</h2>
+        <img  [src]="'http://localhost/api_proyecto/public/uploads/' + item.Imagen" alt="{{ item.Nombre }}" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.Nombre }}</h5>
+          <h4 class="card-text">{{ item.Precio | currency }}</h4>
+          <button (click)="mostrardescripcion(item)" class="botonDC">
+            Ver descripción
+          </button>
+
+          <!-- Mostrar solo si es el producto seleccionado -->
+          <p *ngIf="productoSeleccionado === item">
+            <strong>Descripción:</strong> {{ item.Descripcion }}
+          </p>
+
+          <button (click)="mostrarcaracteristicas(item)" class="botonDC">
+            Ver caracteristicas
+          </button>
+
+          <!-- Mostrar solo si es el producto seleccionado -->
+          <p *ngIf="productoSeleccionadoC === item">
+            <strong>Caracteristicas:</strong> {{ item.caracteristicas }}
+          </p>
+
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            (click)="agregar(item)"
+          >
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <div *ngIf="productosEnOferta.length === 0">
+    <p>No hay productos en oferta por el momento.</p>
+  </div>
+</div>
