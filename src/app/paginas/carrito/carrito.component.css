@@ -13,6 +13,7 @@ table {
 }
 .tabla-carrito {
   justify-items: center;
+  align-items: center;
 
   width: 100%;
   height: auto;
@@ -42,6 +43,12 @@ tr {
 }
 .eliminar {
   background-color: rgb(255, 149, 0);
+  border-radius: 5px;
+}
+.tbody img{
+  width: 30%;
+  height: 30%;
+  object-fit: contain;
 }
 
 .noproduc {

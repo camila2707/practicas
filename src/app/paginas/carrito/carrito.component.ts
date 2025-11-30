@@ -2,7 +2,7 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from '../../servicios/carrito.service';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-carrito',
   standalone: true,
@@ -58,18 +58,43 @@ export class CarritoComponent implements OnInit {
   }
 
   eliminar(idDetalleCarrito: number): void {
-    this.carritoService.eliminarProducto(idDetalleCarrito).subscribe({
-      next: (res: any) => {
-        const items = res.carrito ?? res ?? [];
-        this.carrito = items;
-        this.calcularTotal();
-      }
-    });
-  }
+  this.carritoService.eliminarProducto(idDetalleCarrito).subscribe({
+    next: (res: any) => {
+      Swal.fire({
+        title: 'Producto eliminado 🗑️',
+        text: 'El item fue quitado correctamente del carrito.',
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 1700,
+        toast: true,
+        position: 'top',
+        background: '#fff3f3',
+        color: '#c0392b'
+      });
+      const items = res.carrito ?? res ?? [];
+      this.carrito = items;
+      this.calcularTotal();
+
+      
+    }
+  });
+}
+
 
   vaciarCarrito(): void {
     this.carritoService.vaciarCarrito().subscribe({
       next: () => {
+        Swal.fire({
+        title: 'Carrito vaciado 🗑️',
+        text: 'El carrito fue vaaciado correctamente.',
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 1700,
+        toast: true,
+        position: 'top',
+        background: '#fff3f3',
+        color: '#c34e41ff'
+      });
         this.carrito = [];
         this.total = 0;
       }

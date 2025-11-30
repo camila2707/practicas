@@ -56,8 +56,8 @@
   <h2 class="mb-3">Carrito de compras</h2>
 
   <div *ngIf="carrito.length > 0; else vacio">
-    <table class="table table-striped align-middle">
-      <thead>
+    <table class="table">
+      <thead class="thead">
         <tr>
           <th>Producto</th>
           <th>Nombre</th>
@@ -68,7 +68,7 @@
         </tr>
       </thead>
 
-      <tbody>
+      <tbody class="tbody">
         <tr *ngFor="let item of carrito">
           <td>
             <img
@@ -76,12 +76,12 @@
               [src]="
                 'http://localhost/api_proyecto/public/uploads/' + item.Imagen
               "
-              class="thumb"
+             
             />
           </td>
 
           <td>
-            <strong>{{ item.nombre }}</strong>
+            <strong>{{ item.Nombre }}</strong>
           </td>
 
           <td>$ {{ item.precio_unitario }}</td>
@@ -100,7 +100,7 @@
 
           <td>
             <button
-              class="btn btn-danger btn-sm"
+              class="eliminar"
               (click)="eliminar(item.id_detalle_carrito)"
             >
               Eliminar

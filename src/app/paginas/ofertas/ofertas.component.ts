@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CarritoService } from '../../servicios/carrito.service';
 import { FavoritoService } from '../../servicios/favorito.service';
 import { ProductService } from '../../servicios/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ofertas',
@@ -42,9 +43,23 @@ cargarOfertas() {
 }
 
 
-  agregar(producto: Productos) {
-    this.carritoService.agregarProducto(producto);
-    alert('Producto agregado al carrito');
+  agregarAlCarrito(producto: Productos): void {
+    this.carritoService.agregarProducto(producto).subscribe({
+      next: () => {
+        Swal.fire({
+          title: '¡Agregado al carrito! 🛒✨',
+          text: `${producto.Nombre} se añadió correctamente.`,
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 1800,
+          background: '#fef9e7',
+          color: '#ff8400ff',
+          toast: true,
+          position: 'top'
+        });
+      },
+      error: err => console.error(err)
+    });
   }
 
   agregarfavorito(producto: Productos) {

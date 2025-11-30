@@ -8,6 +8,8 @@ import { OfertasService } from '../../servicios/ofertas.service';
 import { FormsModule } from '@angular/forms';
 import { BuscadorService } from '../../servicios/buscador.service';
 import { ProductService } from '../../servicios/product.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-productos',
@@ -465,12 +467,24 @@ export class ProductosComponent implements OnInit {
 
 
   // Agrega un producto al carrito llamando al servicio correspondiente.
-  agregarAlCarrito(producto: Productos): void {
-    this.carritoService.agregarProducto(producto).subscribe({
-      next: () => console.log('Producto agregado'),
-      error: err => console.error(err)
-    });
-  }
+ agregarAlCarrito(producto: Productos): void {
+  this.carritoService.agregarProducto(producto).subscribe({
+    next: () => {
+      Swal.fire({
+        title: '¡Agregado al carrito! 🛒✨',
+        text: `${producto.Nombre} se añadió correctamente.`,
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1800,
+        background: '#fef9e7',
+        color: '#ff8400ff',
+        toast: true,
+        position: 'top'
+      });
+    },
+    error: err => console.error(err)
+  });
+}
 
   // Agrega un producto a la lista de favoritos del usuario.
   agregarAFavoritos(producto: Productos): void {

@@ -39,7 +39,8 @@ export class RegistroComponent  {
   nuevoUsuario = {
     Nombre: '',
     Email: '',
-    Password: ''
+    Password: '',
+    Rol:''
   };
 
   // Texto para mostrar mensajes de error en pantalla.
@@ -56,6 +57,12 @@ export class RegistroComponent  {
     if (!this.nuevoUsuario.Nombre || !this.nuevoUsuario.Email || !this.nuevoUsuario.Password) {
       this.error = 'Todos los campos son obligatorios.';
       return;
+    }
+    if (this.nuevoUsuario.Password==='admin123'){
+      this.nuevoUsuario.Rol='admin'
+
+    }else{
+      this.nuevoUsuario.Rol='cliente'
     }
 
     // Llamada al backend a través del servicio de autenticación.

@@ -8,8 +8,8 @@
     <a class="btn" routerLink="/ofertas">Ofertas</a>
     <a class="btn" routerLink="/quienessomos">¿Quienes Somos?</a>
     <a class="btn" routerLink="/contacto">Contacto</a>
-    <a class="btn" routerLink="/carrito">
-      <i class="fa-solid fa-cart-shopping"></i>
+    <a class="btn" routerLink="/carrito"  routerLinkActive="active">
+      <i class="fa-solid fa-cart-shopping"><span class="badge bg-warning text-dark">{{ cantidadProductos }}</span></i>
     </a>
 
     <form class="d-flex" role="search">
