@@ -25,25 +25,25 @@ export class OfertasComponent implements OnInit {
     private favoritoService: FavoritoService
   ) { }
 
-  ngOnInit(): void {
-    this.cargarOfertas();
-  }
+ ngOnInit(): void {
+  this.cargarOfertas();
+}
 
-  // Cargar productos desde API
-  cargarOfertas() {
-    this.productService.obtenerProductos().subscribe({
-      next: (productos) => {
-        // Si tu API marca las ofertas con un campo, ej: "oferta == 1"
-        this.productosEnOferta = productos.filter(p => p.oferta>0);
-      },
-      error: (err) => {
-        console.error('Error al obtener productos:', err);
-      }
-    });
-  }
+// Cargar productos en oferta
+cargarOfertas() {
+  this.productService.obtenerOfertas().subscribe({
+    next: (productos) => {
+      this.productosEnOferta = productos;
+    },
+    error: (err) => {
+      console.error('Error al obtener productos en oferta:', err);
+    }
+  });
+}
+
 
   agregar(producto: Productos) {
-    this.carritoService.agregarAlCarrito(producto);
+    this.carritoService.agregarProducto(producto);
     alert('Producto agregado al carrito');
   }
 

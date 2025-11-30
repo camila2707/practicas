@@ -10,39 +10,42 @@ body{
     position: static;
     cursor: pointer;
 }
-.dark{
+.dark-mode {
     background-color: black;
     color: white;
     transition: all 1.5s ease;
     
 }
-.dark .card  {
+.dark-mode .card  {
     background-color: rgb(67, 67, 67);
     color: white;
    
 }
-.dark .card .botonDC{
+.dark-mode  .card .botonDC{
     background-color: rgb(67, 67, 67);
    color: rgb(117, 117, 117);
 }
-.dark .card .off{
+.dark-mode  .card .off{
     color: white;
 }
-.dark .barra .benef{
+.dark-mode  .barra .benef{
     background-color: rgb(126, 126, 126)  ;
     color: black;
     border-radius: 5px;
     border: none;
 }
-.dark div .sinproducfil{
+.dark-mode  div .sinproducfil{
     color: white;
 }
-.dark .ult .cancelar {
+.dark-mode  .ult .cancelar {
     background-color:  rgb(126, 126, 126) ;
     color: black;
 }
-.dark .ult .normas {
+.dark-mode  .ult .normas {
     background-color:  rgb(126, 126, 126) ;
+    color: black;
+}
+.dark-mode label{
     color: black;
 }
     

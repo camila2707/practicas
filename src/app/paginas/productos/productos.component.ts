@@ -441,33 +441,32 @@ export class ProductosComponent implements OnInit {
 
   // Método del ciclo de vida, se ejecuta al inicializar el componente.
   ngOnInit(): void {
-    this.cargarProductos(); // Carga inicial de productos.
+    this.cargarProductos();
   }
-
-  // Solicita al backend la lista completa de productos.
   cargarProductos(): void {
-    this.productService.obtenerProductos().subscribe({
-      next: (res: any) => {
-        console.log('Respuesta del backend:', res);
-        this.productos = Array.isArray(res) ? res : res.data || res.productos || [];
-        this.cargando = false;
-      }
-
-
-      // Si ocurre un error:
-      /*
-      error: (err:any) => {
-        console.error('Error al cargar productos:', err);
-        this.error = 'No se pudieron cargar los productos.'; // Mensaje visible al usuario.
-        this.cargando = false;
-      }*/
-    });
-  }
+  this.productService.obtenerProductos().subscribe({
+    next: (res: any) => {
+      console.log('RAW backend response:', res);
+      this.productos = res; // prueba directa
+      this.cargando = false;
+    },
+    error: (err) => {
+      console.error('Error al cargar productos:', err);
+      this.error = 'No se pudieron cargar los productos.';
+      this.cargando = false;
+    }
+  });
   
+  
+}
+
+
+
+
 
   // Agrega un producto al carrito llamando al servicio correspondiente.
   agregarAlCarrito(producto: Productos): void {
-    this.carritoService.agregarAlCarrito(producto).subscribe({
+    this.carritoService.agregarProducto(producto).subscribe({
       next: () => console.log('Producto agregado'),
       error: err => console.error(err)
     });

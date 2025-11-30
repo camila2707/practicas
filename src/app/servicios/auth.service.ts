@@ -126,6 +126,7 @@ export class AuthService {
     // Obtiene usuario y verifica su rol.
     const usuario = this.getUsuario();
     return usuario?.rol === 'admin';
+    
   }
 }
 

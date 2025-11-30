@@ -48,7 +48,7 @@ export class CarritoComponent implements OnInit {
   cambiarCantidad(idDetalleCarrito: number, event: any): void {
     const nuevaCantidad = Number(event.target.value);
 
-    this.carritoService.actualizarCantidad(idDetalleCarrito, nuevaCantidad).subscribe({
+    this.carritoService.actualizarProducto(idDetalleCarrito, nuevaCantidad).subscribe({
       next: (res: any) => {
         const items = res.carrito ?? res ?? [];
         this.carrito = items;

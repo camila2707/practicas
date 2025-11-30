@@ -50,7 +50,7 @@ export class FavoritosComponent implements OnInit {
     }
   }
   agregar(producto: Productos) {
-    this.carritoService.agregarAlCarrito(producto);
+    this.carritoService.agregarProducto(producto);
     alert('Producto agregado al carrito');
 
   }

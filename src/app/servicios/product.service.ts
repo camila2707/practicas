@@ -1,6 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError, map, throwError } from 'rxjs';
+import { Productos } from '../model/producto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,68 +12,86 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  // ============================================================
-  // GET /products  → público
-  // ============================================================
- obtenerProductos(): Observable<any[]> {
-  return this.http.get<any>(this.apiUrl).pipe(
-    map(r => r.data)
-  );
-}
-
-
-  // ============================================================
-  // POST /products  → requiere rol admin
-  // ============================================================
-  crearProducto(data: any) {
-    const token = localStorage.getItem('token') ?? '';
-
-    return this.http.post(
-      this.apiUrl,
-      data,
-      {
-        headers: new HttpHeaders({
-          'Authorization': `Bearer ${token}`
-        })
-      }
-    );
-  }
-
-
-  // ============================================================
-  // PUT /products/:id  → requiere rol admin
-  // (se usa POST con _method=PUT por FormData)
-  // ============================================================
-  actualizarProducto(id: number, formData: FormData): Observable<any> {
-    const token = localStorage.getItem('token') ?? '';
-
-    return this.http.post(
-      `${this.apiUrl}/${id}?_method=PUT`,
-      formData,
-      {
-        headers: new HttpHeaders({
-          'Authorization': `Bearer ${token}`
-        })
-      }
-    );
-  }
-
-
-
-  // ============================================================
-  // DELETE /products/:id  → requiere rol admin
-  // ============================================================
-  eliminarProducto(id: number): Observable<any> {
-  const token = localStorage.getItem('token') ?? '';
-
-  return this.http.delete(
-    `${this.apiUrl}/${id}`,
-    {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      })
+  // =============================
+  // Helper para obtener token
+  // =============================
+  private getToken(): string {
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem('token') ?? '';
     }
-  );
-}
+    return '';
+  }
+
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Authorization': `Bearer ${this.getToken()}`,
+      'Content-Type': 'application/json'
+    });
+  }
+  private getFormHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Authorization': `Bearer ${this.getToken()}`
+    });
+  }
+
+
+  // =============================
+  // GET público
+  // =============================
+  obtenerProductos(): Observable<Productos[]> {
+    return this.http.get<any>(this.apiUrl).pipe(
+      map(res => Array.isArray(res) ? res : res.data || [])
+    );
+  }
+
+  // GET con token
+  obtenerProductosConToken(): Observable<Productos[]> {
+    return this.http.get<any>(this.apiUrl, { headers: this.getHeaders() }).pipe(
+      map(res => Array.isArray(res) ? res : res.data || [])
+    );
+  }
+
+  // Obtener solo productos en oferta
+  obtenerOfertas(): Observable<Productos[]> {
+    return this.obtenerProductos().pipe(
+      map(productos => productos.filter(p => p.oferta > 0))
+    );
+  }
+
+  // =============================
+  // POST → crear producto (admin)
+  // =============================
+  crearProducto(data: FormData): Observable<any> {
+    const token = localStorage.getItem('token') || '';
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post(this.apiUrl, data, { headers });
+  }
+
+
+
+
+  // =============================
+  // PUT → actualizar producto (admin)
+  // =============================
+  actualizarProducto(id: number, formData: FormData): Observable<any> {
+    formData.set("_method", "PUT");
+
+    return this.http.post(`${this.apiUrl}/${id}`, formData, {
+      headers: this.getFormHeaders()
+    });
+  }
+
+
+
+
+
+  // =============================
+  // DELETE → eliminar producto (admin)
+  // =============================
+  eliminarProducto(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
+  }
 
 }

@@ -21,20 +21,21 @@ export class HomeComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    this.cargarOfertas();
-  }
+  this.cargarOfertas();
+}
 
-  cargarOfertas() {
-    this.productService.obtenerProductos().subscribe({
-      next: (productos) => {
-        // Filtrar solo los productos con oferta 
-        this.productosEnOferta = productos.filter(p => p.oferta >0);
-      },
-      error: (err) => {
-        console.error("Error cargando productos:", err);
-      }
-    });
-  }
+// Cargar productos desde API
+cargarOfertas() {
+  this.productService.obtenerProductos().subscribe({
+    next: (productos) => {
+      this.productosEnOferta = productos.filter(p => p.oferta > 0);
+      console.log(this.productosEnOferta);
+    },
+    error: (err) => {
+      console.error('Error al obtener productos:', err);
+    }
+  });
+}
 
   lgos = [
     {

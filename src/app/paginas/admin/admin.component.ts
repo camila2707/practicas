@@ -83,55 +83,51 @@ export class AdminComponent implements OnInit {
   }
 
   // Guarda un producto: crea uno nuevo o actualiza uno existente según "editando".
-  guardar() {
-    if (!this.archivoImagen && !this.editando) {
-      alert("Debes seleccionar una imagen para el producto");
-      return;
-    }
-
-    // Armamos un FormData, obligatorio para enviar archivos.
-    const formData = new FormData();
-    formData.append("Nombre", this.formulario.value.Nombre);
-    formData.append("Descripcion", this.formulario.value.Descripcion);
-    formData.append("Precio", this.formulario.value.Precio);
-    formData.append("Stock", this.formulario.value.Stock);
-    formData.append("caracteristicas", this.formulario.value.caracteristicas);
-    formData.append("marca", this.formulario.value.marca);
-    formData.append("categoria", this.formulario.value.categoria);
-    formData.append("oferta", this.formulario.value.oferta);
-
-
-    // Solo enviamos la imagen si se seleccionó una nueva.
-    if (this.archivoImagen) {
-      formData.append("Imagen", this.archivoImagen);
-    }
-
-    // EDICIÓN
-    if (this.editando) {
-
-      this.productService.actualizarProducto(this.productoActual.Id_productos, formData).subscribe({
-        next: () => {
-          alert("Producto actualizado");
-          this.reset();           // Resetea los estados del formulario.
-          this.cargarProductos(); // Refresca la lista.
-        },
-        error: (err) => console.error("Error actualizando producto", err)
-      });
-
-    }
-    // CREACIÓN
-    else {
-
-      this.productService.crearProducto(formData).subscribe({
-        next: () => {
-          alert("Producto creado");
-          this.reset();
-          this.cargarProductos();
-        },
-        error: () => alert("Error al crear producto")
-      });
-    }
+ guardar() {
+  if (!this.archivoImagen && !this.editando) {
+    alert("Debes seleccionar una imagen para el producto");
+    return;
   }
+
+  const formData = new FormData();
+  formData.append("Nombre", this.formulario.value.Nombre);
+  formData.append("Descripcion", this.formulario.value.Descripcion);
+  formData.append("Precio", this.formulario.value.Precio);
+  formData.append("Stock", this.formulario.value.Stock);
+  formData.append("caracteristicas", this.formulario.value.caracteristicas);
+  formData.append("marca", this.formulario.value.marca);
+  formData.append("categoria", this.formulario.value.categoria);
+  formData.append("oferta", this.formulario.value.oferta);
+
+  if (this.archivoImagen) {
+    formData.append("Imagen", this.archivoImagen);
+  }
+
+  if (this.editando) {
+    this.productService.actualizarProducto(this.productoActual.Id_productos, formData).subscribe({
+      next: () => {
+        alert("Producto actualizado");
+        this.reset();
+        this.cargarProductos();
+      },
+      error: (err) => console.error("Error actualizando producto", err)
+    });
+  } else {
+    this.productService.crearProducto(formData).subscribe({
+      next: (res) => {
+        alert("Producto creado");
+        console.log(res); // <-- aquí ves el JSON real del backend
+        this.reset();
+        this.cargarProductos();
+      },
+      error: (err) => {
+        console.error("Error creando producto", err);
+        alert("Error al crear producto");
+      }
+    });
+  }
+}
+
 
   // Cargar datos de un producto en el formulario para editarlo.
   editar(producto: any) {
