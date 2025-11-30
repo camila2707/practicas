@@ -48,5 +48,8 @@ body{
 .dark-mode label{
     color: black;
 }
+.dark-mode .l{
+    color: white;
+}
     
 /*Para modo oscuro*/

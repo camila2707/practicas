@@ -1,7 +1,7 @@
 <div class="filtros">
   <div class="row mb-3">
     <div class="col mb-3">
-      <label>Categoria:</label>
+      <label class="l">Categoria:</label>
       <select
         class="form-select"
         [(ngModel)]="selectedCategory"
@@ -15,14 +15,14 @@
     </div>
 
     <div class="col mb-3">
-      <label>Marca:</label>
+      <label class="l">Marca:</label>
       <select class="form-select" [(ngModel)]="selectedBrad" name="marca">
         <option value="">Todos</option>
         <option *ngFor="let marca of marca" [value]="marca">{{ marca }}</option>
       </select>
     </div>
     <div class="col">
-      <label>Precio min</label>
+      <label class="l">Precio min</label>
       <input
         type="number"
         class="front-control"
@@ -32,7 +32,7 @@
     </div>
 
     <div class="col">
-      <label>Precio max</label>
+      <label class="l">Precio max</label>
       <input
         type="number"
         class="front-control"

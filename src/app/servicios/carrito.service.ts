@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, tap, switchMap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Productos } from '../model/producto.model';
+import { Token } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +62,7 @@ export class CarritoService {
   // Agregar producto al carrito
   // ----------------------------------------
   agregarProducto(producto: Productos): Observable<any> {
+  
     
     const headers = this.getHeaders();
     if (!headers) return of({ error: 'No autorizado' });
